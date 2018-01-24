@@ -1,0 +1,125 @@
+MATLAB
+
+clear all
+clc
+close all
+===========================
+
+x=[1 2 3]; // matriks 3x1
+
+x=[1; 2; 3
+	4; 5]; // matriks 5x1
+
+d=x' // transformasi nilai x .... // jadi matriks 1x3
+
+
+e=x(1) // satu merupakan nilai hasil matriks
+	
+A= imread(filedirectory); -> untuk membaca gambar
+figure, imshow(variable) -> imshow (A)
+
+==================
+subplot = memplotingkan gambar mjd 2D
+subplot (1,2,3) -> (1,2 koordinat , 3 sebagai index ke-
+subplot(baris, kolom, indeks)
+
+===================
+---GRAY SCALE---
+new_variable=rgb2gray(RGB); //mengubah gambar ke citra grayscale
+A = imread('E:/lena.png');
+I = rgb2gray(A);
+
+	========
+new_var=double(imread(file_directory));
+[row coloms page] = size
+
+fR=A(:,:,1);
+fG=A(:,:,2);
+fB=A(:,:,3);
+    I=(fR+fG+fB/3);
+
+==========
+
+subplot(1,2,1), imshow(uint8(A)); //karena typedata nya new_var=double(imread(file_directory));
+
+======
+----HITAM PUTIH---
+A= imread(filedirectory);
+I=im2bw(RGB); merubah citra jd hitamputih
+
+======
+---ROTASI GAMBAR---
+new_varX = imread(file_dir);
+new_var= imrotate(varX, degree);
+B = imrotate(A, 90)
+subplot(2,2,1)
+imshow(B)
+
+======
+---RESIZE---
+new_varX = imread(file_dir);
+new_var = imresize(varX, scale);
+subplot(2,2,2), imshow(varX);
+
+======
+---pisah RGB---
+a=imread('file_dir');
+red = a(:,:,1);
+green = a(:,:,2);
+blue = a(:,:,3);
+subplot(2,2,1), imshow(a);
+subplot(2,2,2), imshow(red);
+subplot(2,2,3), imshow(green);
+subplot(2,2,4), imshow(blue);
+
+======
+--HISTOGRAM---
+new_varX = imread(file_dir);
+[row columns numberOfColorBands] = size(rgbImage);
+subplot (2,2,1), imshow (rgbImage, []);
+set(gcf, 'position', get (0, 'screensize'));
+
+redPlane = rgbImage(:,:,1);     %memanggil matriks gambar yg hanya berisi RED
+greenPlane = rgbImage(:,:,2);   %memanggil matriks gambar yg hanya berisi GREEN
+bluePlane = rgbImage(:,:,3);	%memanggil matriks gambar yg hanya berisi BLUE
+
+%Lets get its histogram
+[pixelCountR grayLevelsR] = imhist(redPlane);
+subplot (2,2,2);
+bar (pixelCountR, 'r');
+xlim([0 grayLevelsR(end)]); %scale x axis manually
+
+[pixelCountR grayLevelsG] = imhist(greenPlane);
+subplot(2,2,3);
+bar (pixelCountR, 'g');
+xlim([0 grayLevelsR(end)]);
+
+[pixelCountR grayLevelsB] = imhist(bluePlane);
+subplot(2,2,4);
+bar (pixelCountR, 'B');
+xlim([0 grayLevelsR(end)]);
+
+======
+---NEGASI CITRA---
+new_varX = imread(file_dir);
+fo(x,y,z) = 255 - new_varX(x,y,z);
+
+=====
+---BRIGHTNESS---  (diubah jadi grayscale dulu)
+new_varX = imread(file_dir);
+new_varGS =rgb2gray(new_varX);
+[row colom page] = size(new_varGS);	
+k=50 (value sembarang)
+fungsi for
+fo(x,y,z) = new_varX(x,y,z)+k;
+
+subplot (2,2,1), imshow(new_varX);
+subplot (2,2,2), imshow(new_varGS);
+subplot (2,2,3), imshow(fo);
+
+======
+---CONTRAST---
+P= nilai kontras
+G= koef penguatan kontras
+
+fo(x,y,z) = G.*(A(x,y,z) -P) +P
